@@ -12,7 +12,7 @@ const Contact = () => {
         e.preventDefault();
 
         // Frontend Validation
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|icloud|me|live|msn|googlemail)\.(com|net|org|edu)$/i;
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|icloud|me|live|msn|googlemail|ymail|protonmail|proton|aol|zoho|gmx|yandex|apple|cloud)\.[a-z]{2,}(\.[a-z]{2,})?$/i;
         if (!emailRegex.test(formData.email)) {
             setSuccess("Please use a valid email address (Gmail, Yahoo, iCloud, etc.)");
             return;

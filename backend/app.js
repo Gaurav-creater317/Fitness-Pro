@@ -35,7 +35,7 @@ router.post("/send/mail", async (req, res, next) => {
     }
 
     // Email Validation (checking for valid format and common providers)
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|icloud|me|live|msn|googlemail)\.(com|net|org|edu)$/i;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|icloud|me|live|msn|googlemail|ymail|protonmail|proton|aol|zoho|gmx|yandex|apple|cloud)\.[a-z]{2,}(\.[a-z]{2,})?$/i;
     if (!emailRegex.test(email)) {
         return res.status(400).json({
             success: false,
