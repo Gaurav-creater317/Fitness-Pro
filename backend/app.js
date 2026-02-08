@@ -8,9 +8,13 @@ const router = express.Router();
 
 config({ path: "./config.env" });
 
+const allowedOrigin = process.env.FRONTEND_URL ?
+    (process.env.FRONTEND_URL.endsWith('/') ? process.env.FRONTEND_URL.slice(0, -1) : process.env.FRONTEND_URL)
+    : "*";
+
 app.use(
     cors({
-        origin: [process.env.FRONTEND_URL],
+        origin: [allowedOrigin],
         methods: ["POST", "GET"],
         credentials: true,
     })

@@ -12,7 +12,8 @@ const Contact = () => {
         e.preventDefault();
         setLoading(true);
         try {
-            const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4001';
+            const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4001';
+            const apiUrl = rawApiUrl.endsWith('/') ? rawApiUrl.slice(0, -1) : rawApiUrl;
             await axios.post(`${apiUrl}/api/v1/send/mail`, formData);
             setSuccess("Message sent successfully! We'll get back to you soon.");
             setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
