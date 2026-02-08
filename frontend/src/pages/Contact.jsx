@@ -7,19 +7,26 @@ const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(null);
+    const [errors, setErrors] = useState({});
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setErrors({});
 
-        // Frontend Validation
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|icloud|me|live|msn|googlemail|ymail|protonmail|proton|aol|zoho|gmx|yandex|apple|cloud)\.[a-z]{2,}(\.[a-z]{2,})?$/i;
+        // Super Strict Frontend Validation
+        const newErrors = {};
+        const emailRegex = /^(?!(hi|test|admin|hello|user|guest|mail)@)[a-zA-Z0-9._%+-]{3,}@(gmail|yahoo|outlook|hotmail|icloud)\.com$/i;
+
         if (!emailRegex.test(formData.email)) {
-            setSuccess("Please use a valid email address (Gmail, Yahoo, iCloud, etc.)");
-            return;
+            newErrors.email = "Use Gmail, Yahoo, Outlook, or iCloud only";
         }
 
         if (formData.phone && formData.phone.replace(/\s+/g, "").length < 10) {
-            setSuccess("Please enter a valid 10-digit phone number.");
+            newErrors.phone = "Minimum 10 digits required";
+        }
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
             return;
         }
 
@@ -340,21 +347,24 @@ const Contact = () => {
                                             type="tel"
                                             value={formData.phone}
                                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                            onBlur={(e) => e.target.style.borderColor = errors.phone ? '#ff3e3e' : 'var(--border-color)'}
                                             style={{
                                                 width: '100%',
                                                 padding: '14px 18px',
                                                 background: 'var(--bg-dark)',
-                                                border: '2px solid var(--border-color)',
+                                                border: `2px solid ${errors.phone ? '#ff3e3e' : 'var(--border-color)'}`,
                                                 borderRadius: '10px',
                                                 color: 'var(--text-light)',
                                                 fontSize: '1rem',
                                                 outline: 'none',
                                                 transition: 'all 0.3s ease'
                                             }}
-                                            placeholder="+1 (555) 000-0000"
-                                            onFocus={(e) => e.target.style.borderColor = 'var(--primary)'}
-                                            onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
                                         />
+                                        {errors.phone && (
+                                            <span style={{ color: '#ff3e3e', fontSize: '0.75rem', marginTop: '5px', display: 'block' }}>
+                                                {errors.phone}
+                                            </span>
+                                        )}
                                     </div>
                                 </div>
 
@@ -375,21 +385,24 @@ const Contact = () => {
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         required
+                                        onBlur={(e) => e.target.style.borderColor = errors.email ? '#ff3e3e' : 'var(--border-color)'}
                                         style={{
                                             width: '100%',
                                             padding: '14px 18px',
                                             background: 'var(--bg-dark)',
-                                            border: '2px solid var(--border-color)',
+                                            border: `2px solid ${errors.email ? '#ff3e3e' : 'var(--border-color)'}`,
                                             borderRadius: '10px',
                                             color: 'var(--text-light)',
                                             fontSize: '1rem',
                                             outline: 'none',
                                             transition: 'all 0.3s ease'
                                         }}
-                                        placeholder="john@example.com"
-                                        onFocus={(e) => e.target.style.borderColor = 'var(--primary)'}
-                                        onBlur={(e) => e.target.style.borderColor = 'var(--border-color)'}
                                     />
+                                    {errors.email && (
+                                        <span style={{ color: '#ff3e3e', fontSize: '0.75rem', marginTop: '5px', display: 'block' }}>
+                                            {errors.email}
+                                        </span>
+                                    )}
                                 </div>
 
                                 <div style={{ marginBottom: '20px' }}>

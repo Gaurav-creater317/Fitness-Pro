@@ -34,12 +34,12 @@ router.post("/send/mail", async (req, res, next) => {
         });
     }
 
-    // Email Validation (checking for valid format and common providers)
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|icloud|me|live|msn|googlemail|ymail|protonmail|proton|aol|zoho|gmx|yandex|apple|cloud)\.[a-z]{2,}(\.[a-z]{2,})?$/i;
+    // Exclusively allow only major trusted providers
+    const emailRegex = /^(?!(hi|test|admin|hello|user|guest|mail)@)[a-zA-Z0-9._%+-]{3,}@(gmail|yahoo|outlook|hotmail|icloud)\.com$/i;
     if (!emailRegex.test(email)) {
         return res.status(400).json({
             success: false,
-            message: "Please provide a valid email address from a recognized provider (Gmail, Yahoo, iCloud, etc.)",
+            message: "We only accept emails from Gmail, Yahoo, Outlook, or iCloud (e.g., user@gmail.com).",
         });
     }
 
