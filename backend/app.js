@@ -24,18 +24,41 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 router.post("/send/mail", async (req, res, next) => {
-    const { name, email, message } = req.body;
+    const { name, email, phone, message } = req.body;
+
+    // Basic presence check
     if (!name || !email || !message) {
         return res.status(400).json({
             success: false,
-            message: "Please provide all details",
+            message: "Please provide all required details (Name, Email, Message)",
         });
     }
+
+    // Email Validation (checking for valid format and common providers)
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|icloud|me|live|msn|googlemail)\.(com|net|org|edu)$/i;
+    if (!emailRegex.test(email)) {
+        return res.status(400).json({
+            success: false,
+            message: "Please provide a valid email address from a recognized provider (Gmail, Yahoo, iCloud, etc.)",
+        });
+    }
+
+    // Phone Validation (if provided, check format: at least 10 digits)
+    if (phone) {
+        const phoneRegex = /^\+?[0-9]{10,14}$/;
+        if (!phoneRegex.test(phone.replace(/\s+/g, ""))) {
+            return res.status(400).json({
+                success: false,
+                message: "Please provide a valid phone number (at least 10 digits)",
+            });
+        }
+    }
+
     try {
         await sendEmail({
             email: process.env.SMTP_MAIL,
             subject: "GYM WEBSITE CONTACT MESSAGE",
-            message: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+            message: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || 'Not provided'}\n\nMessage:\n${message}`,
             userEmail: email,
         });
         res.status(200).json({

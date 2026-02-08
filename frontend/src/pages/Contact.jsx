@@ -10,6 +10,19 @@ const Contact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Frontend Validation
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@(gmail|yahoo|outlook|hotmail|icloud|me|live|msn|googlemail)\.(com|net|org|edu)$/i;
+        if (!emailRegex.test(formData.email)) {
+            setSuccess("Please use a valid email address (Gmail, Yahoo, iCloud, etc.)");
+            return;
+        }
+
+        if (formData.phone && formData.phone.replace(/\s+/g, "").length < 10) {
+            setSuccess("Please enter a valid 10-digit phone number.");
+            return;
+        }
+
         setLoading(true);
         try {
             const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:4001';
@@ -19,7 +32,8 @@ const Contact = () => {
             setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
             setTimeout(() => setSuccess(null), 5000);
         } catch (error) {
-            setSuccess("Failed to send message. Please try again.");
+            const errorMsg = error.response?.data?.message || "Failed to send message. Please try again.";
+            setSuccess(errorMsg);
             console.error(error);
         } finally {
             setLoading(false);
