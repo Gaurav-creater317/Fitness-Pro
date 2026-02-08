@@ -1,9 +1,9 @@
-# FITNESS PRO 🏋️
+# 💪 FITNESS PRO 🏋️
 ## A Premium Full-Stack Fitness Experience
 
 Fitness Pro is a modern, high-performance web application designed for fitness enthusiasts and gym owners. It features a cinematic user interface, smooth 3D animations, and a robust full-stack architecture to provide a seamless user experience.
 
-🔗 **Live Demo:** [fitness-pro-services.vercel.app](https://fitness-pro-services.vercel.app/)
+🔗 **Live Demo:** **Frontend:** [https://fitness-pro-services.vercel.app/]  **Backend:**[fitness-pro-services.vercel.app] 
 
 ---
 
