@@ -115,7 +115,7 @@ const Contact = () => {
                     filter: 'blur(60px)'
                 }} />
 
-                <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+                <div className="container" style={{ position: 'relative', zIndex: 1, padding: '0 20px' }}>
                     <motion.div
                         initial="hidden"
                         animate="visible"
@@ -128,7 +128,7 @@ const Contact = () => {
                             variants={fadeInUp}
                             style={{
                                 color: 'var(--primary)',
-                                fontSize: '0.95rem',
+                                fontSize: 'clamp(0.8rem, 2vw, 0.95rem)',
                                 letterSpacing: '3px',
                                 fontWeight: '600',
                                 textTransform: 'uppercase',
@@ -141,7 +141,7 @@ const Contact = () => {
                         <motion.h1
                             variants={fadeInUp}
                             style={{
-                                fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+                                fontSize: 'clamp(2.5rem, 6vw, 4rem)',
                                 fontWeight: '900',
                                 marginBottom: '1.5rem',
                                 color: 'var(--text-light)',
@@ -153,7 +153,7 @@ const Contact = () => {
                         <motion.p
                             variants={fadeInUp}
                             style={{
-                                fontSize: '1.15rem',
+                                fontSize: 'clamp(1rem, 3vw, 1.15rem)',
                                 color: 'var(--text-muted)',
                                 lineHeight: '1.8',
                                 maxWidth: '600px',
@@ -268,14 +268,14 @@ const Contact = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                             whileHover={{
-                                scale: 1.05,
-                                y: -10,
+                                scale: 1.02,
+                                y: -5,
                                 boxShadow: "0 50px 100px rgba(0,0,0,0.6)",
                                 transition: { duration: 0.4, ease: "easeOut" }
                             }}
                             style={{
                                 background: 'var(--bg-card)',
-                                padding: '50px 40px',
+                                padding: 'clamp(25px, 5vw, 50px) clamp(20px, 4vw, 40px)',
                                 borderRadius: '20px',
                                 border: '1px solid var(--border-color)',
                                 boxShadow: 'var(--shadow)',
@@ -297,7 +297,7 @@ const Contact = () => {
                             </div>
 
                             <form onSubmit={handleSubmit}>
-                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '20px' }}>
+                                <div className="contact-form-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px', marginBottom: '20px' }}>
                                     <div>
                                         <label style={{
                                             display: 'block',

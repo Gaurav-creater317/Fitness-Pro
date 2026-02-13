@@ -55,7 +55,7 @@ const Calculator = () => {
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     whileHover={{
-                        scale: 1.05,
+                        scale: 1.02,
                         boxShadow: "0 40px 100px rgba(0,0,0,0.6)",
                         transition: { duration: 0.5, ease: "easeOut" }
                     }}
@@ -68,12 +68,13 @@ const Calculator = () => {
                         boxShadow: 'var(--shadow)',
                         border: '1px solid var(--border-color)',
                         display: 'grid',
-                        gridTemplateColumns: '1fr 1fr',
-                        cursor: 'default'
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+                        cursor: 'default',
+                        width: '100%'
                     }}
                 >
                     {/* Left Side: Form */}
-                    <div style={{ padding: '40px' }}>
+                    <div style={{ padding: 'clamp(20px, 5vw, 40px)' }}>
                         <h2 style={{ fontSize: '2rem', fontWeight: '800', marginBottom: '1.5rem', color: 'var(--text-light)' }}>BMI <span style={{ color: 'var(--primary)' }}>Calculator</span></h2>
                         <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
                             Enter your height and weight to calculate your Body Mass Index and check your health status.
@@ -118,7 +119,12 @@ const Calculator = () => {
                                 </div>
                             </div>
 
-                            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', marginBottom: '30px' }}>
+                            <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                                gap: '20px',
+                                marginBottom: '30px'
+                            }}>
                                 <div>
                                     <label style={{ display: 'flex', alignItems: 'center', marginBottom: '8px', color: 'var(--text-muted)', fontWeight: '600' }}>
                                         <Ruler size={16} style={{ marginRight: '8px', color: 'var(--primary)' }} /> Height (cm)

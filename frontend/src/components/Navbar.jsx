@@ -134,7 +134,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Icons Wrapper */}
-                <div style={{ display: 'none' }} className="hamburger">
+                <div className="hamburger">
                     <button
                         onClick={toggleTheme}
                         style={{
@@ -142,12 +142,14 @@ const Navbar = () => {
                             border: 'none',
                             cursor: 'pointer',
                             color: 'var(--text-light)',
-                            marginRight: '20px'
+                            marginRight: '15px',
+                            display: 'flex',
+                            alignItems: 'center'
                         }}
                     >
-                        {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
+                        {theme === 'dark' ? <Sun size={22} /> : <Moon size={22} />}
                     </button>
-                    <div onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} style={{ cursor: 'pointer' }}>
+                    <div onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                         {isMobileMenuOpen ? <X size={28} color="var(--text-light)" /> : <Menu size={28} color="var(--text-light)" />}
                     </div>
                 </div>

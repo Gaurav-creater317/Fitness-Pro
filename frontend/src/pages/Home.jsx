@@ -27,14 +27,14 @@ const Home = () => {
             {/* Hero Section */}
             <section className="hero" style={{
                 position: 'relative',
-                height: '100vh',
+                minHeight: '100dvh',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'flex-start', // Align left as per typical modern gym templates or centered if preferred
-                background: `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(${HeroImage}) center/contain no-repeat`,
-                backgroundColor: '#000', // Add black background color to fill empty space
-                textAlign: 'left', // Left aligned text usually looks better with this template
-                padding: '0 5%'
+                justifyContent: 'center',
+                background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url(${HeroImage}) center/cover no-repeat`,
+                backgroundColor: '#000',
+                textAlign: 'left',
+                padding: '100px 5%'
             }}>
                 <motion.div
                     className="container"
@@ -43,37 +43,33 @@ const Home = () => {
                     variants={staggerContainer}
                     style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}
                 >
-
-
                     <motion.h1 style={{
-                        fontSize: 'clamp(3.5rem, 3vw, 6rem)',
+                        fontSize: 'clamp(2.5rem, 8vw, 5rem)',
                         fontWeight: '900',
                         textTransform: 'uppercase',
                         lineHeight: '1.1',
-                        marginBottom: '2rem',
+                        marginBottom: '1.5rem',
                         color: 'white',
                         textShadow: '0 10px 30px rgba(0,0,0,0.5)',
-                        overflow: 'hidden'
                     }}>
                         {["Build Perfect", "Body Shape", "For Good and", "Healthy Life."].map((line, lineIndex) => (
-                            <div key={lineIndex} style={{ display: 'block', overflow: 'hidden' }}>
-                                {line.split("").map((char, charIndex) => (
+                            <div key={lineIndex} style={{ display: 'block' }}>
+                                {line.split(" ").map((word, wordIndex) => (
                                     <motion.span
-                                        key={charIndex}
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
+                                        key={wordIndex}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
                                         transition={{
-                                            duration: 0.1,
-                                            delay: (lineIndex * 15 + charIndex) * 0.04,
-                                            ease: "easeIn"
+                                            duration: 0.5,
+                                            delay: (lineIndex * 2 + wordIndex) * 0.1,
                                         }}
                                         style={{
                                             display: 'inline-block',
-                                            color: (line === "Body Shape" && charIndex > 4) ? 'var(--primary)' : 'inherit',
-                                            whiteSpace: char === " " ? "pre" : "normal"
+                                            color: word === "Shape" ? 'var(--primary)' : 'inherit',
+                                            marginRight: '15px'
                                         }}
                                     >
-                                        {char}
+                                        {word}
                                     </motion.span>
                                 ))}
                             </div>
@@ -83,11 +79,11 @@ const Home = () => {
                     <motion.p
                         variants={fadeInUp}
                         style={{
-                            fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+                            fontSize: 'clamp(1rem, 4vw, 1.2rem)',
                             color: '#ccc',
                             marginBottom: '2.5rem',
                             maxWidth: '600px',
-                            lineHeight: '1.8'
+                            lineHeight: '1.6'
                         }}
                     >
                         Transform your body and mind with our expert-designed workout programs.
@@ -102,8 +98,8 @@ const Home = () => {
                             to="/workouts"
                             className="btn btn-primary"
                             style={{
-                                padding: '18px 48px',
-                                fontSize: '1.1rem',
+                                padding: '16px 40px',
+                                fontSize: '1rem',
                                 display: 'inline-flex',
                                 alignItems: 'center',
                                 gap: '10px'
@@ -112,9 +108,7 @@ const Home = () => {
                             <Dumbbell size={20} />
                             Get Started
                         </Link>
-
                     </motion.div>
-
                 </motion.div>
             </section>
 

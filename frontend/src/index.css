@@ -239,7 +239,8 @@ button {
   }
 
   .hamburger {
-    display: block !important;
+    display: flex !important;
+    align-items: center;
   }
 
   /* Auto-stack grids on tablets */
@@ -251,6 +252,16 @@ button {
     grid-template-columns: 1fr !important;
     gap: 2rem !important;
   }
+
+  .hero {
+    height: auto !important;
+    min-height: 100dvh;
+    padding: 100px 20px !important;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem !important;
+  }
 }
 
 @media (max-width: 768px) {
@@ -260,17 +271,28 @@ button {
   }
 
   .section-title {
-    font-size: 2.2rem;
+    font-size: 2.2rem !important;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem !important;
   }
 
   /* Footer Mobile Optimization */
   footer .container {
-    gap: 2.5rem !important;
+    gap: 1.5rem !important;
+    flex-direction: column !important;
+    text-align: center !important;
   }
 
   footer p {
-    font-size: 0.9rem !important;
+    font-size: 0.85rem !important;
     line-height: 1.8 !important;
+  }
+
+  footer p span[style*="margin: 0 10px"],
+  footer p span[style*="color: #444"] {
+    display: none !important;
   }
 
   footer p span {
@@ -278,16 +300,23 @@ button {
     margin-bottom: 5px;
   }
 
-  /* Hide separators on mobile */
-  footer p span[style*="margin: 0 10px"],
-  footer p span[style*="color: #444"] {
-    display: none !important;
+  .calculator-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .calculator-grid>div:last-child {
+    border-left: none !important;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .contact-form-grid {
+    grid-template-columns: 1fr !important;
   }
 }
 
 @media (max-width: 576px) {
   .section-title {
-    font-size: 1.8rem;
+    font-size: 1.8rem !important;
   }
 
   .btn {
@@ -295,11 +324,37 @@ button {
   }
 
   .logo {
-    font-size: 1.4rem !important;
+    font-size: 1.3rem !important;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem !important;
   }
 
   main {
-    padding-top: 70px !important;
+    padding-top: 60px !important;
+  }
+
+  .workouts-grid-responsive {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Responsive Utilities */
+.mobile-stack {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.hidden-mobile {
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.full-width-mobile {
+  @media (max-width: 576px) {
+    width: 100% !important;
   }
 }
 

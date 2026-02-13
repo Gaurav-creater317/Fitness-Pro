@@ -245,8 +245,8 @@ const Workouts = () => {
                 {/* Workouts Grid */}
                 <div className="workouts-grid-responsive" style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
-                    gap: '30px',
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+                    gap: '25px',
                     marginTop: '2rem'
                 }}>
                     {filteredWorkouts.map((workout, index) => (
