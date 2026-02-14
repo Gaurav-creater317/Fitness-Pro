@@ -192,10 +192,9 @@ const Calculator = () => {
                         </form>
                     </div>
 
-                    {/* Right Side: Result */}
-                    <div style={{
+                    <div className="calculator-result-side" style={{
                         background: 'rgba(255, 62, 62, 0.03)',
-                        padding: '40px',
+                        padding: 'clamp(30px, 8vw, 50px)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -212,8 +211,8 @@ const Calculator = () => {
                                 >
                                     <h3 style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '20px' }}>Your BMI Result</h3>
                                     <div style={{
-                                        width: '150px',
-                                        height: '150px',
+                                        width: 'clamp(120px, 30vw, 150px)',
+                                        height: 'clamp(120px, 30vw, 150px)',
                                         borderRadius: '50%',
                                         border: `8px solid ${getStatusColor(status)}`,
                                         display: 'flex',
@@ -222,7 +221,7 @@ const Calculator = () => {
                                         margin: '0 auto 20px',
                                         boxShadow: `0 0 30px ${getStatusColor(status)}40`
                                     }}>
-                                        <span style={{ fontSize: '3rem', fontWeight: '800', color: 'var(--text-light)' }}>{bmi}</span>
+                                        <span style={{ fontSize: 'clamp(2rem, 8vw, 3rem)', fontWeight: '800', color: 'var(--text-light)' }}>{bmi}</span>
                                     </div>
                                     <h4 style={{ fontSize: '1.8rem', color: getStatusColor(status), marginBottom: '10px' }}>{status}</h4>
                                     <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>

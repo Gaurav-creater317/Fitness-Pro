@@ -33,8 +33,7 @@ const Home = () => {
                 justifyContent: 'center',
                 background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url(${HeroImage}) center/cover no-repeat`,
                 backgroundColor: '#000',
-                textAlign: 'left',
-                padding: '100px 5%'
+                padding: 'clamp(80px, 15vh, 120px) 5%'
             }}>
                 <motion.div
                     className="container"
@@ -66,7 +65,7 @@ const Home = () => {
                                         style={{
                                             display: 'inline-block',
                                             color: word === "Shape" ? 'var(--primary)' : 'inherit',
-                                            marginRight: '15px'
+                                            marginRight: 'clamp(8px, 2vw, 15px)'
                                         }}
                                     >
                                         {word}
@@ -78,8 +77,9 @@ const Home = () => {
 
                     <motion.p
                         variants={fadeInUp}
+                        className="hero-description"
                         style={{
-                            fontSize: 'clamp(1rem, 4vw, 1.2rem)',
+                            fontSize: 'clamp(0.95rem, 4vw, 1.2rem)',
                             color: '#ccc',
                             marginBottom: '2.5rem',
                             maxWidth: '600px',
@@ -92,6 +92,7 @@ const Home = () => {
 
                     <motion.div
                         variants={fadeInUp}
+                        className="hero-btns"
                         style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}
                     >
                         <Link
@@ -128,8 +129,8 @@ const Home = () => {
                         variants={staggerContainer}
                         style={{
                             display: 'grid',
-                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-                            gap: '2rem'
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(250px, 30vw, 350px), 1fr))',
+                            gap: 'clamp(1rem, 3vw, 2rem)'
                         }}
                     >
                         {[

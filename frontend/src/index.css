@@ -225,13 +225,13 @@ button {
 /* Responsive Design System */
 @media (max-width: 1200px) {
   .container {
-    max-width: 960px;
+    max-width: 1000px;
   }
 }
 
 @media (max-width: 992px) {
   .container {
-    max-width: 720px;
+    max-width: 800px;
   }
 
   .desktop-links {
@@ -257,10 +257,19 @@ button {
     height: auto !important;
     min-height: 100dvh;
     padding: 100px 20px !important;
+    text-align: center !important;
   }
 
   .hero h1 {
     font-size: 2.8rem !important;
+  }
+
+  .hero-description {
+    margin: 0 auto 2.5rem !important;
+  }
+
+  .hero-btns {
+    justify-content: center !important;
   }
 }
 
@@ -304,13 +313,20 @@ button {
     grid-template-columns: 1fr !important;
   }
 
-  .calculator-grid>div:last-child {
+  .calculator-grid>div:last-child,
+  .calculator-result-side {
     border-left: none !important;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color) !important;
   }
 
   .contact-form-grid {
     grid-template-columns: 1fr !important;
+  }
+
+  /* Button improvements for mobile */
+  .btn {
+    padding: 12px 28px;
+    font-size: 0.95rem;
   }
 }
 
@@ -321,6 +337,7 @@ button {
 
   .btn {
     width: 100%;
+    margin-bottom: 10px;
   }
 
   .logo {
@@ -328,7 +345,11 @@ button {
   }
 
   .hero h1 {
-    font-size: 2.2rem !important;
+    font-size: 2rem !important;
+  }
+
+  .hero p {
+    font-size: 0.95rem !important;
   }
 
   main {
@@ -338,12 +359,40 @@ button {
   .workouts-grid-responsive {
     grid-template-columns: 1fr !important;
   }
+
+  .workout-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem !important;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
 }
 
 /* Responsive Utilities */
 .mobile-stack {
   display: flex !important;
   flex-direction: column !important;
+}
+
+.mobile-center {
+  @media (max-width: 768px) {
+    text-align: center !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
 
 .hidden-mobile {

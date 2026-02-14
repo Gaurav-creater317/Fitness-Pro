@@ -148,7 +148,7 @@ const Contact = () => {
                                 lineHeight: '1.2'
                             }}
                         >
-                            Let's Start Your Fitness Journey
+                            Let's Start Your <span style={{ color: 'var(--primary)' }}>Journey</span>
                         </motion.h1>
                         <motion.p
                             variants={fadeInUp}
@@ -255,10 +255,10 @@ const Contact = () => {
                     </motion.div>
 
                     {/* Main Contact Section */}
-                    <div style={{
+                    <div className="contact-main-grid" style={{
                         display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
-                        gap: '40px',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(clamp(300px, 100%, 500px), 1fr))',
+                        gap: 'clamp(20px, 5vw, 40px)',
                         alignItems: 'start'
                     }}>
                         {/* Contact Form */}
@@ -599,7 +599,7 @@ const Contact = () => {
                                     Connect with me on professional platforms and follow my development journey!
                                 </p>
 
-                                <div style={{ display: 'flex', gap: '15px', marginBottom: '30px', flexWrap: 'wrap' }}>
+                                <div className="social-links-grid" style={{ display: 'flex', gap: '15px', marginBottom: '30px', flexWrap: 'wrap', justifyContent: 'center' }}>
                                     {[
                                         { icon: <Linkedin size={20} />, color: '#0077b5', name: 'LinkedIn', url: 'https://www.linkedin.com/in/gaurav-mehra-a41220299/' },
                                         { icon: <Instagram size={20} />, color: '#e4405f', name: 'Instagram', url: 'https://www.instagram.com/authentic_gaurav1/#' },

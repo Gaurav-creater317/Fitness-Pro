@@ -242,11 +242,10 @@ const Workouts = () => {
                     ))}
                 </motion.div>
 
-                {/* Workouts Grid */}
                 <div className="workouts-grid-responsive" style={{
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-                    gap: '25px',
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(clamp(250px, 100%, 350px), 1fr))',
+                    gap: 'clamp(15px, 3vw, 25px)',
                     marginTop: '2rem'
                 }}>
                     {filteredWorkouts.map((workout, index) => (
@@ -398,8 +397,7 @@ const WorkoutCard = ({ workout, index }) => {
                     {workout.description}
                 </p>
 
-                {/* Stats Row */}
-                <div style={{
+                <div className="workout-stats-grid" style={{
                     display: 'grid',
                     gridTemplateColumns: 'repeat(2, 1fr)',
                     gap: '12px',
